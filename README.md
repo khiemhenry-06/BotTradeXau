@@ -10,13 +10,22 @@ Dưới đây là tổng quan về các thư mục trong repository này:
 
 ```
 📁 BotTradeXau
- ├── 📁 trade_vang         # Thư mục chứa bot giao dịch Vàng
- │    ├── 📄 GoldScalper_EA.mq5     # Mã nguồn Expert Advisor cho Vàng
- │    └── 📄 README.md              # Hướng dẫn chi tiết cài đặt & sử dụng bot Vàng
- ├── 📁 trade_bitcoin      # Thư mục chứa bot giao dịch Bitcoin
- │    ├── 📄 BTCScalper_EA.mq5     # Mã nguồn Expert Advisor cho Bitcoin
- │    └── 📄 HUONG_DAN.md           # Hướng dẫn chi tiết cài đặt & sử dụng bot Bitcoin
- └── 📄 README.md          # Tài liệu tổng quan về toàn bộ repository (file này)
+ ├── 📁 trade_vang             # Bot scalping Vàng (RSI + BB)
+ │    ├── 📄 GoldScalper_EA.mq5     
+ │    └── 📄 README.md              
+ ├── 📁 trade_vang_grid        # Bot lưới (Grid Trading) cho Vàng
+ │    ├── 📄 GoldGrid_EA.mq5     
+ │    └── 📄 HUONG_DAN.md           
+ ├── 📁 trade_vang_martingale  # Bot nhồi lệnh (DCA/Martingale) cho Vàng
+ │    ├── 📄 GoldMartingale_EA.mq5  
+ │    └── 📄 HUONG_DAN.md           
+ ├── 📁 trade_vang_breakout    # Bot phá vỡ xu hướng (Breakout) cho Vàng
+ │    ├── 📄 GoldBreakout_EA.mq5    
+ │    └── 📄 HUONG_DAN.md           
+ ├── 📁 trade_bitcoin          # Bot giao dịch Bitcoin (Multi-indicator)
+ │    ├── 📄 BTCScalper_EA.mq5     
+ │    └── 📄 HUONG_DAN.md           
+ └── 📄 README.md              # File tổng quan (file này)
 ```
 
 ---
@@ -35,8 +44,16 @@ Bot được thiết kế riêng cho thị trường Vàng (XAUUSD) với phong 
     *   **Lọc Spread** an toàn, ngăn không vào lệnh khi thị trường biến động quá mạnh hoặc thanh khoản thấp.
 *   **Chi tiết & Cài đặt:** Xem tại [trade_vang/README.md](file:///e:/ide/antigravity/trade_bot/trade_vang/README.md).
 
-### 2. 🪙 BTC Scalper Pro (`trade_bitcoin`)
+### 2. 🕸️ Gold Grid Bot (`trade_vang_grid`)
+Chiến lược giao dịch theo lưới (Grid Trading), tối ưu khi thị trường đi ngang (Sideway) hoặc dao động trong biên độ. Bot liên tục rải lệnh chờ Buy/Sell cách đều nhau để ăn từng nhịp sóng nhỏ.
 
+### 3. 📉 Gold Martingale Bot (`trade_vang_martingale`)
+Chiến lược gồng lỗ/nhồi lệnh (DCA) theo cấp số nhân. Bot sẽ nhồi thêm lệnh với khối lượng lớn hơn khi giá đi ngược hướng, giúp nhanh chóng chốt lời toàn bộ khi giá hồi phục một chút. **Yêu cầu vốn lớn và quản lý rủi ro chặt chẽ.**
+
+### 4. 🚀 Gold Breakout Bot (`trade_vang_breakout`)
+Chiến lược giao dịch bùng nổ (Breakout). Bot tính toán Đỉnh/Đáy của một vùng nén giá (ví dụ 20 nến M15) và chỉ vào lệnh khi giá phá vỡ mạnh qua các mốc này (kèm theo khoảng đệm để tránh nhiễu).
+
+### 5. 🪙 BTC Scalper Pro (`trade_bitcoin`)
 Bot được thiết kế cho thị trường Bitcoin (BTCUSD) với **hệ thống chấm điểm đa chỉ báo nâng cao** (Scoring System) và **đa khung thời gian** (Multi-Timeframe), phù hợp cho việc giao dịch một tài sản có biên độ dao động lớn như tiền điện tử.
 
 *   **Thời gian giao dịch tối ưu:** Khung thời gian **M1** (vào lệnh) và **M15** (lọc xu hướng).
