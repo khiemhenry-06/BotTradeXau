@@ -126,8 +126,8 @@ void OnTick()
    if(InpUseTrailing) ManageTrailing();
    if(!CheckConditions()) return;
    
-   double rsi[3],upBB[3],loBB[3],mdBB[3],emaF[3],emaS[3],emaT[3];
-   double adx[3],pDI[3],nDI[3],atr[3],macd[3],macdS[3],stK[3],stD[3];
+   double rsi[],upBB[],loBB[],mdBB[],emaF[],emaS[],emaT[];
+   double adx[],pDI[],nDI[],atr[],macd[],macdS[],stK[],stD[];
    
    if(!GetData(rsi,upBB,loBB,mdBB,emaF,emaS,emaT,adx,pDI,nDI,atr,macd,macdS,stK,stD))
       return;
@@ -181,7 +181,7 @@ void OnTick()
    
    // MTF filter
    if(InpUseMTF && score>=6) {
-      double htfRSI[1], htfEMA[1];
+      double htfRSI[], htfEMA[];
       ArraySetAsSeries(htfRSI,true); ArraySetAsSeries(htfEMA,true);
       CopyBuffer(hRSI_HTF,0,0,1,htfRSI);
       CopyBuffer(hEMA_HTF,0,0,1,htfEMA);
@@ -222,7 +222,7 @@ void OnTick()
    if(bbSqzS) score+=2;
    
    if(InpUseMTF && score>=6) {
-      double htfRSI2[1], htfEMA2[1];
+      double htfRSI2[], htfEMA2[];
       ArraySetAsSeries(htfRSI2,true); ArraySetAsSeries(htfEMA2,true);
       CopyBuffer(hRSI_HTF,0,0,1,htfRSI2);
       CopyBuffer(hEMA_HTF,0,0,1,htfEMA2);
@@ -371,8 +371,8 @@ void DisplayInfo()
          if(posInfo.Magic()==InpMagicNumber&&posInfo.Symbol()==_Symbol)
          {op++;opf+=posInfo.Profit()+posInfo.Swap()+posInfo.Commission();}
    
-   double rv[1]; ArraySetAsSeries(rv,true); CopyBuffer(hRSI,0,0,1,rv);
-   double av[1]; ArraySetAsSeries(av,true); CopyBuffer(hADX,0,0,1,av);
+   double rv[]; ArraySetAsSeries(rv,true); CopyBuffer(hRSI,0,0,1,rv);
+   double av[]; ArraySetAsSeries(av,true); CopyBuffer(hADX,0,0,1,av);
    int sp=(int)SymbolInfoInteger(_Symbol,SYMBOL_SPREAD);
    
    string s="";
