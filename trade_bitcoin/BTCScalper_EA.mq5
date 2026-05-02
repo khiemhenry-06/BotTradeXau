@@ -39,7 +39,7 @@ input int    InpStochD        = 3;
 input int    InpStochSlow     = 3;
 
 input group "=== BO LOC ==="
-input int    InpMaxSpread     = 100;
+input int    InpMaxSpread     = 5000;
 input bool   InpUseTimeFilter = false;
 input int    InpStartHour     = 8;
 input int    InpEndHour       = 22;
