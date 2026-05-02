@@ -139,10 +139,10 @@ void OnTick()
    // ATR-based dynamic SL/TP
    double slPts, tpPts;
    if(tv>0&&ts>0){
-      tpPts=(InpTakeProfit/(tv/ts))/InpLotSize;
-      slPts=MathMax((InpStopLoss/(tv/ts))/InpLotSize, atr[0]*InpATRSLMult/pt);
+      tpPts=((InpTakeProfit/(tv/ts))/InpLotSize)/pt;
+      slPts=MathMax(((InpStopLoss/(tv/ts))/InpLotSize)/pt, atr[0]*InpATRSLMult/pt);
    } else {
-      tpPts=InpTakeProfit*10; slPts=InpStopLoss*10;
+      tpPts=InpTakeProfit*100; slPts=InpStopLoss*100;
    }
    
    int score=0;
@@ -305,8 +305,8 @@ void ManageBreakeven()
       double pf=posInfo.Profit();
       double beThreshold=InpBEStart*InpLotSize;
       double beOff=0;
-      if(tv>0&&ts>0) beOff=(InpBEOffset/(tv/ts))/InpLotSize*pt;
-      else beOff=InpBEOffset*10*pt;
+      if(tv>0&&ts>0) beOff=(InpBEOffset/(tv/ts))/InpLotSize;
+      else beOff=InpBEOffset*100*pt;
       
       if(pf>=beThreshold)
       {
@@ -340,8 +340,8 @@ void ManageTrailing()
       if(pf<tStart) continue;
       
       double stepPx=0;
-      if(tv>0&&ts>0) stepPx=(InpTrailStep/(tv/ts))/InpLotSize*pt;
-      else stepPx=InpTrailStep*10*pt;
+      if(tv>0&&ts>0) stepPx=(InpTrailStep/(tv/ts))/InpLotSize;
+      else stepPx=InpTrailStep*100*pt;
       
       if(posInfo.PositionType()==POSITION_TYPE_BUY)
       {
